@@ -1,9 +1,25 @@
-const UserList = () => {
-  return(
+const UserList = ({ users }) => {
+  const renderedUsers = users.map((user, index) => {
+    return (
+      <tr key={index}>
+        <td>{user.name}</td>
+        <td>{user.email}</td>
+      </tr>
+    );
+  });
+  return (
     <div>
-      <p>User List Component</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>{renderedUsers}</tbody>
+      </table>
     </div>
-  )
-}
+  );
+};
 
-export default UserList
+export default UserList;

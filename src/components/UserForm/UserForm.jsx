@@ -1,23 +1,26 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-const UserForm = () => {
-  const [email, setEmail] = useState('')
-  
-  const [name, setName] = useState('')
+const UserForm = ({ onUserAdd }) => {
+  const [email, setEmail] = useState("");
+
+  const [name, setName] = useState("");
 
   const nameOnChangeHandler = (e) => {
-    setName(e.target.value)
-  }
+    setName(e.target.value);
+  };
 
   const emailOnChangeHandler = (e) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
 
   const onSubmitHandler = (e) => {
-    e.preventDefault()
-    console.log(name)
-    console.log(email)
-  }
+    e.preventDefault();
+    const newUser = {
+      name,
+      email
+    }
+    onUserAdd(newUser)
+  };
 
   return (
     <form onSubmit={onSubmitHandler}>
@@ -31,7 +34,7 @@ const UserForm = () => {
       </div>
       <button>Add User</button>
     </form>
-  )
-}
+  );
+};
 
-export default UserForm
+export default UserForm;
